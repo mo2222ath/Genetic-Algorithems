@@ -1,14 +1,87 @@
 import random
 
-def CalculateSurvivingTarget(damagingTarget):
-    SurvivingTarget = []
-    for i in range(len(damagingTarget)):
-        temp = damagingTarget[i]
-        temp2 = []
-        for j in range(len(damagingTarget[0])):
-            temp2.append(1.0 - temp[j])
-        SurvivingTarget.append(temp2)
-    return SurvivingTarget
+
+class Chromosome:
+    Genes = []
+    numberOfTargets = 0
+    numberOfTypeWeapons = []
+    damagingTarget = []
+    threatCoefficient = []
+    survivingTarget = []
+    numberOfInstanceWeapons = 0
+    fitness = 0
+
+    def __init__(self,numberOfTargets,numberOfTypeWeapons,damagingTarget,threatCoefficient):        
+        self.numberOfTargets = numberOfTargets
+        self.numberOfTypeWeapons = numberOfTypeWeapons
+        self.damagingTarget = damagingTarget
+        self.threatCoefficient = threatCoefficient
+        self.numberOfInstanceWeapons = sum(self.numberOfTypeWeapons)
+        self.survivingTarget = self.CalculateSurvivingTarget()
+        self.Genes = self.Representation()
+        self.fitness = self.Fitness()
+        
+
+    def Fitness(self):
+        numberOfGenes = len(self.Genes)
+        nummberOfWappens = numberOfGenes // self.numberOfTargets
+        index = 0
+        result = 0
+        for i in range(self.numberOfTargets):
+            tempInstance = self.numberOfTypeWeapons[:]
+            indexOfInstance = 0
+            temp = 1
+            for j in range(nummberOfWappens):
+                if self.Genes[index] == 1 :
+                    temp *= self.survivingTarget[indexOfInstance][i]
+                index += 1
+                if tempInstance[indexOfInstance] > 1 :
+                    tempInstance[indexOfInstance] -=1
+                else:
+                    indexOfInstance +=1
+            temp *= self.threatCoefficient[i]
+            result += temp
+        return result
+
+    def CalculateSurvivingTarget(self):
+        SurvivingTarget = []
+        for i in range(len(self.damagingTarget)):
+            temp = self.damagingTarget[i]
+            temp2 = []
+            for j in range(len(self.damagingTarget[0])):
+                temp2.append(1.0 - temp[j])
+            SurvivingTarget.append(temp2)
+        return SurvivingTarget
+
+    def Representation(self):
+        result = []
+        temp = []
+        for i in range(self.numberOfTargets):
+            for j in range(self.numberOfInstanceWeapons):
+                if i==0:
+                    n = random.randint(0,1)
+                    temp.append(n)
+                else:
+                    if temp[j] == 0:
+                        n = random.randint(0,1)
+                        temp[j] = n
+            result += temp
+            # print("before" , temp)
+            for i in range(len(temp)):
+                if temp[i] == 1: temp[i] = 2
+            # print("After" , temp)
+            # print(result)
+        for i in range(len(result)):
+            if result[i] == 2:
+                result[i] = 0
+        return result
+    
+
+
+
+
+
+
 
 damagingTarget = [[0.3,0.6,0.5],
                   [0.4,0.5,0.4],
@@ -16,57 +89,17 @@ damagingTarget = [[0.3,0.6,0.5],
 
 weaponTypes_numberOfInstances = {'Tank': 2 , 'Aircraft': 1 ,'Grenade': 2}
 threatCoefficient = [16,5,10]
-numberOfTargets = len(threatCoefficient)
-survivingTarget = CalculateSurvivingTarget(damagingTarget)
-numberOfInstances = [weaponTypes_numberOfInstances[i] for i in weaponTypes_numberOfInstances]
-numberOfWeapons = sum(numberOfInstances)
-chromosomeSize = numberOfTargets * numberOfWeapons
+# numberOfTargets = len(threatCoefficient)
+
+numberOfTypeWeapons = [weaponTypes_numberOfInstances[i] for i in weaponTypes_numberOfInstances]
+# numberOfWeapons = sum(numberOfTypeWeapons)
+# chromosomeSize = numberOfTargets * numberOfWeapons
+
+ch1 = Chromosome(3,numberOfTypeWeapons,damagingTarget,threatCoefficient)
+
+print(ch1.Genes)
 
 
-def Fitness(A):
-    numberOfGenes = len(A)
-    nummberOfWappens = numberOfGenes // numberOfTargets
-    index = 0
-    result = 0
-    for i in range(numberOfTargets):
-        tempInstance = numberOfInstances[:]
-        indexOfInstance = 0
-        temp = 1
-        for j in range(nummberOfWappens):
-            if A[index] == 1 :
-                temp *= survivingTarget[indexOfInstance][i]
-            index += 1
-            if tempInstance[indexOfInstance] > 1 :
-                tempInstance[indexOfInstance] -=1
-            else:
-                indexOfInstance +=1
-        temp *= threatCoefficient[i]
-        result += temp
-    return result
-
-
-def Representation():
-    result = []
-    temp = []
-    for i in range(numberOfTargets):
-        for j in range(numberOfWeapons):
-            if i==0:
-                n = random.randint(0,1)
-                temp.append(n)
-            else:
-                if temp[j] == 0:
-                    n = random.randint(0,1)
-                    temp[j] = n
-        result += temp
-        print("before" , temp)
-        for i in range(len(temp)):
-            if temp[i] == 1: temp[i] = 2
-        print("After" , temp)
-        print(result)
-    for i in range(len(result)):
-        if result[i] == 2:
-            result[i] = 0
-    return result
 
 
 # A = [1,0,1,0,0  ,0,0,0,1,1,  0,1,0,0,0]
