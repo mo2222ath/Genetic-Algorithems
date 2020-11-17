@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="74d1b68b-ba2f-46e8-93a2-1eb6bca4a490" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/A1.py" beforeDir="false" afterPath="$PROJECT_DIR$/A1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/A1_selection_crossover.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Genetic Algorithms 2020 - Assignment 1(1).pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/GeneticAlgorithm.py" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1kKyhYBjLY7q0Xl074HAazzNNHr" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RunManager">
+    <configuration name="A1" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Assignments" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/A1.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.A1" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="74d1b68b-ba2f-46e8-93a2-1eb6bca4a490" name="Default Changelist" comment="" />
+      <created>1605463696523</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1605463696523</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="1303" height="343" key="GridCell.Tab.0.bottom" timestamp="1605548243076">
+      <screen x="40" y="27" width="1326" height="741" />
+    </state>
+    <state width="1303" height="343" key="GridCell.Tab.0.bottom/40.27.1326.741@40.27.1326.741" timestamp="1605548243076" />
+    <state width="1303" height="343" key="GridCell.Tab.0.center" timestamp="1605548243075">
+      <screen x="40" y="27" width="1326" height="741" />
+    </state>
+    <state width="1303" height="343" key="GridCell.Tab.0.center/40.27.1326.741@40.27.1326.741" timestamp="1605548243075" />
+    <state width="1303" height="343" key="GridCell.Tab.0.left" timestamp="1605548243075">
+      <screen x="40" y="27" width="1326" height="741" />
+    </state>
+    <state width="1303" height="343" key="GridCell.Tab.0.left/40.27.1326.741@40.27.1326.741" timestamp="1605548243075" />
+    <state width="1303" height="343" key="GridCell.Tab.0.right" timestamp="1605548243076">
+      <screen x="40" y="27" width="1326" height="741" />
+    </state>
+    <state width="1303" height="343" key="GridCell.Tab.0.right/40.27.1326.741@40.27.1326.741" timestamp="1605548243076" />
+  </component>
+</project>
