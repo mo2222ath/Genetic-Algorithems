@@ -56,18 +56,46 @@ class GeneticA:
     def replaceGeneration(self, oldGeneration, newGeneration):
         pass
 
-    def Selection(self, chromosome1, n1, chromosome2, n2):
-        if chromosome1.fitness < chromosome2.fitness:
-            new = Chromosome(chromosome1.Genes, chromosome1.numberOfTargets, chromosome1.numberOfTypeWeapons,
-                             chromosome1.damagingTarget, chromosome1.threatCoefficient)
-            return new, n1
-        else:
-            new2 = Chromosome(chromosome2.Genes, chromosome2.numberOfTargets, chromosome2.numberOfTypeWeapons,
-                              chromosome2.damagingTarget, chromosome2.threatCoefficient)
-            return new2, n2
+    def Selection(self, generation, sizeOfMatingPool):
+        mating_pool = []
+        for i in range(sizeOfMatingPool):
+            random_index1 = random.randint(0, len(generation) // 2)
+            random_index2 = random.randint((len(generation) // 2) + 1, len(generation) - 1)
+
+            chosen_chromosome = Chromosome(generation[random_index1].Genes,
+                                           generation[random_index1].numberOfChannels,
+                                           generation[random_index1].totalBudget)
+            print(random_index1,"i:", i)
+            print(random_index2,"i:", i)
+            if generation[random_index2].fitness >= generation[random_index1].fitness:
+                chosen_chromosome = Chromosome(generation[random_index2].Genes,
+                                               generation[random_index2].numberOfChannels,
+                                               generation[random_index2].totalBudget)
+            mating_pool.append(chosen_chromosome)
+
+        return mating_pool
 
     def crossover(self, chromosome1, chromosome2, rc):
-        pass
+        r = random.uniform(0, 1)
+        r = round(r, 1)
+        if r <= rc:
+            random_index1 = random.randint(1, len(chromosome1.Genes) // 2)
+            random_index2 = random.randint((len(chromosome1.Genes) // 2) + 1, len(chromosome1.Genes) - 1)
+
+            print(random_index1)
+
+            print(random_index2)
+            genesOffspring1 = chromosome1.Genes[:random_index1] + chromosome2.Genes[
+                                                                  random_index1:random_index2] + chromosome1.Genes[
+                                                                                                 random_index2:]
+            genesOffspring2 = chromosome2.Genes[:random_index1] + chromosome1.Genes[
+                                                                  random_index1:random_index2] + chromosome2.Genes[
+                                                                                                 random_index2:]
+            chromosome1.SetGenes(genesOffspring1)
+            chromosome2.SetGenes(genesOffspring2)
+            return chromosome1, chromosome2
+        else:
+            return chromosome1, chromosome2
 
     def uniformMutation(self, offspring, pm):
         pass
@@ -94,6 +122,7 @@ class Chromosome:
     Genes = []
     totalBudget = 0
     fitness = 0
+    numberOfChannels = 0
 
     def __init__(self, genes, numberOfChannel, totalBudgets):
         self.numberOfChannels = numberOfChannel
@@ -107,14 +136,14 @@ class Chromosome:
 
     def Fitness(self):
         for g in self.Genes:
-            self.fitness += (g.allocatedBudgetValue * g.ROI) / totalBudget
+            self.fitness += (g.allocatedBudgetValue * g.ROI) / self.totalBudget
             # print(self.fitness, g.allocatedBudgetValue, g.ROI, totalBudget)
 
     def showChromosome(self):
         d = []
         for gene in self.Genes:
             d.append(gene.allocatedBudgetValue)
-        print(d , " Fitness : " , self.fitness)
+        print(d, " Fitness : ", self.fitness)
 
 
 if __name__ == '__main__':
