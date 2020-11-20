@@ -114,22 +114,22 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1303" height="119" key="GridCell.Tab.0.bottom" timestamp="1605798224565">
+    <state width="1303" height="196" key="GridCell.Tab.0.bottom" timestamp="1605845448664">
       <screen x="40" y="27" width="1326" height="741" />
     </state>
-    <state width="1303" height="119" key="GridCell.Tab.0.bottom/40.27.1326.741@40.27.1326.741" timestamp="1605798224565" />
-    <state width="1303" height="119" key="GridCell.Tab.0.center" timestamp="1605798224564">
+    <state width="1303" height="196" key="GridCell.Tab.0.bottom/40.27.1326.741@40.27.1326.741" timestamp="1605845448664" />
+    <state width="1303" height="196" key="GridCell.Tab.0.center" timestamp="1605845448663">
       <screen x="40" y="27" width="1326" height="741" />
     </state>
-    <state width="1303" height="119" key="GridCell.Tab.0.center/40.27.1326.741@40.27.1326.741" timestamp="1605798224564" />
-    <state width="1303" height="119" key="GridCell.Tab.0.left" timestamp="1605798224563">
+    <state width="1303" height="196" key="GridCell.Tab.0.center/40.27.1326.741@40.27.1326.741" timestamp="1605845448663" />
+    <state width="1303" height="196" key="GridCell.Tab.0.left" timestamp="1605845448662">
       <screen x="40" y="27" width="1326" height="741" />
     </state>
-    <state width="1303" height="119" key="GridCell.Tab.0.left/40.27.1326.741@40.27.1326.741" timestamp="1605798224563" />
-    <state width="1303" height="119" key="GridCell.Tab.0.right" timestamp="1605798224564">
+    <state width="1303" height="196" key="GridCell.Tab.0.left/40.27.1326.741@40.27.1326.741" timestamp="1605845448662" />
+    <state width="1303" height="196" key="GridCell.Tab.0.right" timestamp="1605845448664">
       <screen x="40" y="27" width="1326" height="741" />
     </state>
-    <state width="1303" height="119" key="GridCell.Tab.0.right/40.27.1326.741@40.27.1326.741" timestamp="1605798224564" />
+    <state width="1303" height="196" key="GridCell.Tab.0.right/40.27.1326.741@40.27.1326.741" timestamp="1605845448664" />
     <state width="1303" height="395" key="GridCell.Tab.1.bottom" timestamp="1605785175494">
       <screen x="40" y="27" width="1326" height="741" />
     </state>
@@ -156,7 +156,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/A2.py</url>
-          <line>126</line>
+          <line>154</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>

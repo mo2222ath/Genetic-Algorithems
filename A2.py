@@ -137,7 +137,6 @@ class Chromosome:
     def Fitness(self):
         for g in self.Genes:
             self.fitness += (g.allocatedBudgetValue * g.ROI) / self.totalBudget
-            # print(self.fitness, g.allocatedBudgetValue, g.ROI, totalBudget)
 
     def showChromosome(self):
         d = []
