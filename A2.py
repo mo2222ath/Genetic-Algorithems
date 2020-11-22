@@ -1,4 +1,5 @@
 import random
+import copy
 
 
 def Representation(ROIDictionary, boundariesList, totalBudget):
@@ -35,8 +36,6 @@ def Representation(ROIDictionary, boundariesList, totalBudget):
         gene.allocatedBudgetValue = random.uniform(int(gene.lowerBound), int(gene.upperBound))
         allowedBudget = allowedBudget - (gene.allocatedBudgetValue - gene.lowerBound)
 
-    # for item in genes:
-    #     print(item.channelName ,item.lowerBound , item.upperBound , item.allocatedBudgetValue )
     return genes
 
 
@@ -56,7 +55,7 @@ class GeneticA:
         matingPool = self.Selection(self.generation, len(self.generation) // 2)
 
         n1 = random.randint(0, len(matingPool) // 2)
-        n2 = random.randint(len(matingPool) // 2 + 1, len(matingPool) - 1)
+        n2 = random.randint((len(matingPool) // 2) , len(matingPool) - 1)
 
         first, second = matingPool[n1], matingPool[n2]
         offSpring1, offSpring2 = self.crossover(first, second, self.probOfCross)
@@ -64,30 +63,40 @@ class GeneticA:
         if isUniform:
             offSpring1 = self.uniformMutation(offSpring1, self.probOfMutate)
             offSpring2 = self.uniformMutation(offSpring2, self.probOfMutate)
+
         else:
             offSpring1 = self.nonUniformMutation(offSpring1, t, sizeOfGeneration, 1, self.probOfMutate)
             offSpring2 = self.nonUniformMutation(offSpring2, t, sizeOfGeneration, 1, self.probOfMutate)
 
-        isFeasible = self.checkConstraints(offSpring1, offSpring1.totalBudget)
-        if not isFeasible: offSpring1 = self.fixChromosome(offSpring1)
-        isFeasible = self.checkConstraints(offSpring2, generation[0].numberOfInstanceWeapons,
-                                           generation[0].numberOfTargets)
-        if not isFeasible: offSpring2 = self.fixChromosome(offSpring2)
 
-        offSpring1.SetGenes(offSpring1.Genes)
-        offSpring2.SetGenes(offSpring2.Genes)
+        if not self.checkTotalBudgetConstraints(offSpring1):
+            self.fixChromosome(offSpring1)
 
-        if generation[newIndex1].fitness > offSpring1.fitness:
-            generation[newIndex1] = offSpring1
-        if generation[newIndex2].fitness > offSpring2.fitness:
-            generation[newIndex2] = offSpring2
+        if not self.checkTotalBudgetConstraints(offSpring2):
+            self.fixChromosome(offSpring2)
 
-        newGeneration = generation[:]
+
+        for ch in generation:
+            if not self.checkTotalBudgetConstraints(ch):
+                self.fixChromosome(ch)
+
+        newGeneration = self.replaceGeneration(generation , offSpring1 , offSpring2)
 
         return newGeneration
 
-    def replaceGeneration(self, oldGeneration, newGeneration):
-        pass
+    def replaceGeneration(self, oldGeneration, offSpring1 , offSpring2):
+        newGeneration = copy.deepcopy(oldGeneration)
+        newGeneration.append(offSpring1)
+        newGeneration.append(offSpring2)
+        fitnessList = []
+        for chromosome in newGeneration:
+            fitnessList.append(chromosome.fitness)
+        for i in range(2):
+            indexMin = fitnessList.index(min(fitnessList))
+            fitnessList.remove(fitnessList[indexMin])
+            newGeneration.remove(newGeneration[indexMin])
+
+        return newGeneration
 
     def Selection(self, generation, sizeOfMatingPool):
         mating_pool = []
@@ -113,28 +122,15 @@ class GeneticA:
             random_index1 = random.randint(1, len(chromosome1.Genes) // 2)
             random_index2 = random.randint((len(chromosome1.Genes) // 2) + 1, len(chromosome1.Genes) - 1)
 
-            print(random_index1)
-            print(random_index2)
-            temp1 = chromosome1.Genes[:]
-            temp2 = chromosome2.Genes[:]
+            # print(random_index1)
+            # print(random_index2)
 
-            offspring1 = Chromosome(temp1 , chromosome1.numberOfChannels , chromosome1.totalBudget)
-            offspring2 = Chromosome(temp2 , chromosome1.numberOfChannels , chromosome1.totalBudget)
-            print("***********before")
-            chromosome1.showChromosome()
-            chromosome2.showChromosome()
-            offspring1.showChromosome()
-            offspring2.showChromosome()
+            offspring1 = copy.deepcopy(chromosome1)
+            offspring2 = copy.deepcopy(chromosome2)
 
             for i in range(random_index1, random_index2 + 1):
                 offspring1.Genes[i].allocatedBudgetValue = chromosome2.Genes[i].allocatedBudgetValue
                 offspring2.Genes[i].allocatedBudgetValue = chromosome1.Genes[i].allocatedBudgetValue
-            print("***********after")
-            chromosome1.showChromosome()
-            chromosome2.showChromosome()
-            offspring1.showChromosome()
-            offspring2.showChromosome()
-            print("***********end")
 
             offspring1.updateFitness()
             offspring2.updateFitness()
@@ -169,6 +165,7 @@ class GeneticA:
             else:
                 newOffspring.append(gene)
         offspring.SetGenes(newOffspring)
+        offspring.updateFitness()
         return offspring
 
     def nonUniformMutation(self, offspring, t, T, b,
@@ -200,21 +197,43 @@ class GeneticA:
             else:
                 newOffspring.append(gene)
         offspring.SetGenes(newOffspring)
+        offspring.updateFitness()
         return offspring
 
-    def checkConstraints(self, chromo, totalBudget):
-        genes = chromo.Genes[:]
-        sum = 0
-        for gene in genes:
-            sum += gene.allocatedBudgetValue
-        for gene in genes:
-            if sum > totalBudget or gene.allocatedBudgetValue < float(gene.lowerBound) or \
-                    gene.allocatedBudgetValue > (float(gene.upperBound) * totalBudget) / 100:
-                return False
+    def checkTotalBudgetConstraints(self, chromo):
+        if chromo.totalBudgetChromosome > chromo.totalBudget:
+            return False
         return True
 
+    def calculateTotalBudget(self,chromo):
+        genes = chromo.Genes[:]
+        tempSum = 0
+        for gene in genes:
+            tempSum += gene.allocatedBudgetValue
+        return tempSum
+
     def fixChromosome(self, chromosome):
-        pass
+        total = copy.deepcopy(chromosome.totalBudgetChromosome)
+        diff = total - chromosome.totalBudget
+        ROIList = []
+        for item in chromosome.Genes:
+            ROIList.append(item.ROI)
+        while diff != 0:
+            minROI = min(ROIList)
+            indexMin = ROIList.index(minROI)
+            ROIList[indexMin] = 1000000
+            if chromosome.Genes[indexMin].allocatedBudgetValue <= diff:
+                diff -= chromosome.Genes[indexMin].allocatedBudgetValue
+                chromosome.Genes[indexMin].allocatedBudgetValue = 0
+            else:
+                chromosome.Genes[indexMin].allocatedBudgetValue -= diff
+                diff = 0
+        chromosome.updateFitness()
+
+
+
+
+
 
 
 class Gene:
@@ -230,19 +249,23 @@ class Chromosome:
     totalBudget = 0
     fitness = 0
     numberOfChannels = 0
+    totalBudgetChromosome = 0
 
-    def __init__(self, Genes, numberOfChannels, totalBudget):
+    def __init__(self, genes, numberOfChannels, totalBudget):
         self.numberOfChannels = numberOfChannels
         self.totalBudget = totalBudget
-        self.Genes = Genes[:]
+        self.Genes = genes[:]
         self.Fitness()
+        self.totalBudgetChromosome = self.calculateTotalBudget()
 
     def SetGenes(self, genes):
         self.Genes = genes[:]
         self.Fitness()
 
     def updateFitness(self):
+        self.fitness = 0.0
         self.Fitness()
+        self.totalBudgetChromosome = self.calculateTotalBudget()
 
     def Fitness(self):
         for g in self.Genes:
@@ -252,7 +275,35 @@ class Chromosome:
         d = []
         for gene in self.Genes:
             d.append(gene.allocatedBudgetValue)
-        print(d, " Fitness : ", self.fitness)
+            t = (gene.lowerBound , gene.upperBound)
+            d.append(t)
+        print(d)
+        print(" Fitness : ", self.fitness)
+        print("Total budget" , self.totalBudgetChromosome)
+
+    def calculateTotalBudget(chromo):
+        genes = chromo.Genes[:]
+        tempSum = 0
+        for gene in genes:
+            tempSum += gene.allocatedBudgetValue
+        return tempSum
+
+
+
+def displayResult(lastGeneration):
+    result = ""
+    maxChromosome = lastGeneration[0]
+    for chromosome in lastGeneration:
+        if chromosome.fitness > maxChromosome.fitness:
+            maxChromosome = chromosome
+
+    result += "The final marketing budget allocation is :\n"
+    for gene in maxChromosome.Genes:
+        result += gene.channelName + " -> " + str(gene.allocatedBudgetValue) + "K\n"
+    result += "The total profit is " + str(maxChromosome.fitness) + "K\n"
+    result += "**********************************************\n"
+    return result
+
 
 
 if __name__ == '__main__':
@@ -286,62 +337,41 @@ if __name__ == '__main__':
     #         line[1] = float(line[1])
     #     boundariesList.append(line)
 
-    # print("Output of GA: \n")
-    chromosmeList1 = []
-    for i in range(5):
-        Genes = Representation(ROIDictionary, boundariesList, totalBudget)
-        ch1 = Chromosome(Genes, numberOfChannels, totalBudget)
-        chromosmeList1.append(ch1)
+    print("Output of GA: \n")
 
-    print("First Generation : ")
-    for chromosome in chromosmeList1:
-        chromosome.showChromosome()
 
-    g = GeneticA(0.5 , 0.01)
+    # print("First Generation : ")
+    # for chromosome in chromosmeList1:
+        # chromosome.showChromosome()
+        # print('*******************************')
+    f = open("the Output File.txt", "w")
+    n = 0
+    isUniform = True
+    sizeOfGeneration = 500
+    finalResult = []
+    for j in range(2):
 
-    n1 , n2 = g.crossover(chromosmeList1[0] , chromosmeList1[1] , 0.5)
-    print("Cross")
-    n1.showChromosome()
-    n2.showChromosome()
+        if j == 1:
+            isUniform = False
+            f.write("Using Non-uniform Mutution  ****************************************\n")
+        else:
+            f.write("Using Uniform Mutution  ****************************************\n")
+        for i in range(20):
+            chromosmeList1 = []
+            for k in range(5):
+                Genes = Representation(ROIDictionary, boundariesList, totalBudget)
+                ch1 = Chromosome(Genes, numberOfChannels, totalBudget)
+                chromosmeList1.append(ch1)
+            print("itretion " , i)
+            while n < sizeOfGeneration:
+                ga = GeneticA(0.5 , 0.3)
+                chromosmeList2 = ga.CreateNewGeneration(chromosmeList1 , isUniform , n , sizeOfGeneration)
+                chromosmeList1 = copy.deepcopy(chromosmeList2)
+                n += 1
+            n = 0
+            result = displayResult(chromosmeList2)
+            f.write(result)
+            print(result)
 
-    # n = 0
-    # isUniform  = True
-    # sizeOfGeneration = 5000
-    # while n < sizeOfGeneration:
-    #     ga = GeneticA(0.5 , 0.3)
-    #     chromosmeList2 = ga.CreateNewGeneration(chromosmeList1 , isUniform , n , sizeOfGeneration)
-    #     n += 1
-    #     print("iteration ",n)
-    #     print("Second Gener")
-    #     for i in chromosmeList2:
-    #         print(i.Genes , i.fitness)
+    f.close()
 
-    # l1 = [1.0 , 2.0 , 3.0 , 4.0]
-    # l2 = [5.0 , 6.0 , 7.0 , 8.0]
-    # ch1 = Chromosome(l1, 4 , 100)
-    # ch2 = Chromosome(l2, 4, 100)
-    # n1 , n2 = GeneticA.crossover(ch1,ch2,0.5)
-    # n1.showChromosome()
-    # n2.showChromosome()
-
-# Constraints
-# 1: sum of genes <= total budget
-
-# gene1 = Gene()
-# gene1.allocatedBudgetValue = 1
-#
-# gene2 = Gene()
-# gene2.allocatedBudgetValue = 2
-#
-# gene3 = Gene()
-# gene3.allocatedBudgetValue = 3
-#
-#
-# gene4 = Gene()
-# gene4.allocatedBudgetValue = 4
-# genesList = [gene1,gene2 , gene3 , gene4]
-#
-# chromo = Chromosome(genesList,4,100)
-# ga = GeneticA(0.5,0.1)
-# ga.checkConstraints(chromo,100)
-# ga.nonUniformMutation(chromo,1,5,1,0.5)

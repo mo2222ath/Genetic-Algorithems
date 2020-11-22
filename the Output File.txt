@@ -1,0 +1,282 @@
+Using Uniform Mutution  ****************************************
+The final marketing budget allocation is :
+TV advertising -> 4.8189447829607985K
+Google -> 38.67179126806164K
+Twitter -> 4.033591817759058K
+Facebook -> 11.842269225006774K
+The total profit is 10.00985033215852K
+**********************************************
+The final marketing budget allocation is :
+TV advertising -> 2.443610472627947K
+Google -> 24.734786038685353K
+Twitter -> 4.848021249198143K
+Facebook -> 14.171601095947365K
+The total profit is 11.774423205591406K
+**********************************************
+The final marketing budget allocation is :
+TV advertising -> 17.652528332653432K
+Google -> 56.634199117944526K
+Twitter -> 0K
+Facebook -> 16.524212221142204K
+The total profit is 11.302459286656838K
+**********************************************
+The final marketing budget allocation is :
+TV advertising -> 0K
+Google -> 76.96109745621796K
+Twitter -> 0K
+Facebook -> 23.038902543782044K
+The total profit is 11.808015781567809K
+**********************************************
+The final marketing budget allocation is :
+TV advertising -> 7.139380364134556K
+Google -> 31.488426583235732K
+Twitter -> 7.94011242712803K
+Facebook -> 14.979935609898291K
+The total profit is 11.454998883785793K
+**********************************************
+The final marketing budget allocation is :
+TV advertising -> 44.23366863572136K
+Google -> 45.72822626549987K
+Twitter -> 0K
+Facebook -> 10.03810509877877K
+The total profit is 10.782477112177977K
+**********************************************
+The final marketing budget allocation is :
+TV advertising -> 6.876694884295346K
+Google -> 42.26231194312133K
+Twitter -> 5.910622456252384K
+Facebook -> 12.550286381340383K
+The total profit is 11.533770077941947K
+**********************************************
+The final marketing budget allocation is :
+TV advertising -> 26.89009388371538K
+Google -> 48.62991702374878K
+Twitter -> 0K
+Facebook -> 24.479989092535845K
+The total profit is 11.689406430695236K
+**********************************************
+The final marketing budget allocation is :
+TV advertising -> 4.658205241347503K
+Google -> 36.45767114406662K
+Twitter -> 0.07170432034174101K
+Facebook -> 10.069440687235833K
+The total profit is 11.641476897636165K
+**********************************************
+The final marketing budget allocation is :
+TV advertising -> 19.52437082655903K
+Google -> 70.25870984113205K
+Twitter -> 0K
+Facebook -> 10.216919332308926K
+The total profit is 11.11685597361455K
+**********************************************
+The final marketing budget allocation is :
+TV advertising -> 11.724178532542634K
+Google -> 27.489096616219825K
+Twitter -> 0.0K
+Facebook -> 11.448616746876004K
+The total profit is 11.08567848155542K
+**********************************************
+The final marketing budget allocation is :
+TV advertising -> 10.621638565031844K
+Google -> 47.78243922092359K
+Twitter -> 9.672046130159885K
+Facebook -> 20.112242629297082K
+The total profit is 11.325523770218723K
+**********************************************
+The final marketing budget allocation is :
+TV advertising -> 8.206283272577036K
+Google -> 76.54808391543875K
+Twitter -> 0K
+Facebook -> 10.00003134998949K
+The total profit is 11.877298442200592K
+**********************************************
+The final marketing budget allocation is :
+TV advertising -> 38.07852269399897K
+Google -> 38.797819735085056K
+Twitter -> 0K
+Facebook -> 12.414538353133032K
+The total profit is 10.71344400996705K
+**********************************************
+The final marketing budget allocation is :
+TV advertising -> 2.9476707690177957K
+Google -> 76.41341116928297K
+Twitter -> 0.0K
+Facebook -> 10.108329603109759K
+The total profit is 11.612832865850411K
+**********************************************
+The final marketing budget allocation is :
+TV advertising -> 27.420021457225197K
+Google -> 49.977643129538485K
+Twitter -> 0K
+Facebook -> 11.513030057917165K
+The total profit is 10.344496626919057K
+**********************************************
+The final marketing budget allocation is :
+TV advertising -> 6.75484532789488K
+Google -> 32.967255905015456K
+Twitter -> 8.625558080141538K
+Facebook -> 11.591901308729755K
+The total profit is 10.940418559145325K
+**********************************************
+The final marketing budget allocation is :
+TV advertising -> 10.698086928058313K
+Google -> 73.08006918704625K
+Twitter -> 0K
+Facebook -> 12.752585152872056K
+The total profit is 11.826416775729092K
+**********************************************
+The final marketing budget allocation is :
+TV advertising -> 28.650987254679308K
+Google -> 58.2637474844074K
+Twitter -> 0K
+Facebook -> 10.831112166771538K
+The total profit is 11.240010929510593K
+**********************************************
+The final marketing budget allocation is :
+TV advertising -> 0K
+Google -> 84.9983655343803K
+Twitter -> 0K
+Facebook -> 15.001634465619704K
+The total profit is 11.849983655343804K
+**********************************************
+Using Non-uniform Mutution  ****************************************
+The final marketing budget allocation is :
+TV advertising -> 27.38078496238232K
+Google -> 36.34464984916263K
+Twitter -> 0.29037767384904056K
+Facebook -> 10.206358683543023K
+The total profit is 10.355084986340866K
+**********************************************
+The final marketing budget allocation is :
+TV advertising -> 6.455993344370924K
+Google -> 68.75179260244714K
+Twitter -> 5.0363411136441005K
+Facebook -> 16.41120396903064K
+The total profit is 11.787688496983005K
+**********************************************
+The final marketing budget allocation is :
+TV advertising -> 26.405733365570402K
+Google -> 35.005940003617084K
+Twitter -> 0.012172277301860521K
+Facebook -> 10.238826651428257K
+The total profit is 10.73005399646568K
+**********************************************
+The final marketing budget allocation is :
+TV advertising -> 2.6992081345261725K
+Google -> 59.64369208087678K
+Twitter -> 4.279160828171366K
+Facebook -> 20.485813440691924K
+The total profit is 11.830598039190207K
+**********************************************
+The final marketing budget allocation is :
+TV advertising -> 17.704439421499572K
+Google -> 38.62274201916139K
+Twitter -> 6.666521830430828K
+Facebook -> 23.16963041966251K
+The total profit is 11.720432199003863K
+**********************************************
+The final marketing budget allocation is :
+TV advertising -> 11.202094057770644K
+Google -> 65.63332571378264K
+Twitter -> 0.35972240256173504K
+Facebook -> 21.669478271779752K
+The total profit is 11.783653934871765K
+**********************************************
+The final marketing budget allocation is :
+TV advertising -> 21.89170995010299K
+Google -> 41.99434112164031K
+Twitter -> 2.425368510761127K
+Facebook -> 13.821995216147617K
+The total profit is 10.911603029890104K
+**********************************************
+The final marketing budget allocation is :
+TV advertising -> 14.785867974232003K
+Google -> 51.63356554148056K
+Twitter -> 0.6900669750745259K
+Facebook -> 11.224838951709211K
+The total profit is 11.55076489452047K
+**********************************************
+The final marketing budget allocation is :
+TV advertising -> 32.20001519459165K
+Google -> 54.30136205256584K
+Twitter -> 0.3675107876451988K
+Facebook -> 12.84353021784996K
+The total profit is 10.808690848107684K
+**********************************************
+The final marketing budget allocation is :
+TV advertising -> 24.622270193877043K
+Google -> 48.30883382782898K
+Twitter -> 0.052028836031177805K
+Facebook -> 22.518477891557527K
+The total profit is 11.78056692459776K
+**********************************************
+The final marketing budget allocation is :
+TV advertising -> 28.980084329901977K
+Google -> 46.617213562825924K
+Twitter -> 4.807451218666289K
+Facebook -> 14.244504522085366K
+The total profit is 11.794765173069027K
+**********************************************
+The final marketing budget allocation is :
+TV advertising -> 22.926929728562857K
+Google -> 63.43469573581571K
+Twitter -> 0.1855692199469221K
+Facebook -> 10.467460815587389K
+The total profit is 11.143894034365193K
+**********************************************
+The final marketing budget allocation is :
+TV advertising -> 19.796868447281334K
+Google -> 46.11690324408455K
+Twitter -> 4.68105089480239K
+Facebook -> 6.989157169939441K
+The total profit is 11.832844649765994K
+**********************************************
+The final marketing budget allocation is :
+TV advertising -> 15.961533989402726K
+Google -> 31.54311760868729K
+Twitter -> 1.3090313467857202K
+Facebook -> 10.131423583310266K
+The total profit is 10.308677530472709K
+**********************************************
+The final marketing budget allocation is :
+TV advertising -> 34.34381456687373K
+Google -> 46.51005608362499K
+Twitter -> 3.7252691267569173K
+Facebook -> 12.739133553643109K
+The total profit is 11.264162046515274K
+**********************************************
+The final marketing budget allocation is :
+TV advertising -> 40.020091592658716K
+Google -> 36.171778271423925K
+Twitter -> 1.0510161522582746K
+Facebook -> 10.791590616045893K
+The total profit is 11.73574320074983K
+**********************************************
+The final marketing budget allocation is :
+TV advertising -> 11.5100212627136K
+Google -> 67.97795450090024K
+Twitter -> 0K
+Facebook -> 10.12085359495836K
+The total profit is 11.438390613541873K
+**********************************************
+The final marketing budget allocation is :
+TV advertising -> 10.146654842403633K
+Google -> 53.93070282464544K
+Twitter -> 7.578763019367787K
+Facebook -> 16.208127443875956K
+The total profit is 11.739625485496745K
+**********************************************
+The final marketing budget allocation is :
+TV advertising -> 36.24865882489996K
+Google -> 29.848901221004407K
+Twitter -> 7.5258011881737295K
+Facebook -> 15.541679760130279K
+The total profit is 10.49590262612342K
+**********************************************
+The final marketing budget allocation is :
+TV advertising -> 8.822936394922452K
+Google -> 35.138254596157324K
+Twitter -> 0K
+Facebook -> 17.090732646439818K
+The total profit is 11.832030751605451K
+**********************************************
