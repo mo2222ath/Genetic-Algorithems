@@ -139,7 +139,7 @@ class Fuzzy:
                        projectFuzzVal = projectFundDict['M']
                    elif projectFundRule.__contains__('low'):
                        projectFuzzVal = projectFundDict['L']
-                   elif projectFundRule.__contains__('very low'):
+                   if projectFundRule.__contains__('very low'):
                        projectFuzzVal = projectFundDict['VL']
 
                    inferredRule = max(projectFuzzVal,teamExpFuzzVal)
@@ -187,7 +187,7 @@ class Fuzzy:
                         projectFuzzVal = projectFundDict['M']
                     elif projectFundRule.__contains__('low'):
                         projectFuzzVal = projectFundDict['L']
-                    elif projectFundRule.__contains__('very low'):
+                    if projectFundRule.__contains__('very low'):
                         projectFuzzVal = projectFundDict['VL']
 
                     inferredRule = min(projectFuzzVal, teamExpFuzzVal)
@@ -217,7 +217,7 @@ class Fuzzy:
                         projectFuzzVal = projectFundDict['M']
                     elif projectFundRule.__contains__('low'):
                         projectFuzzVal = projectFundDict['L']
-                    elif projectFundRule.__contains__('very low'):
+                    if projectFundRule.__contains__('very low'):
                         projectFuzzVal = projectFundDict['VL']
 
                     inferredRule = projectFuzzVal
