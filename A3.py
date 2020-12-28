@@ -111,6 +111,8 @@ class Fuzzy:
     def inferenceAndDefuzz(self,ruleList,projectFundDict,teamExpDict):
         defuzzList = list()
         fuzzList = list()
+        riskDict = dict()
+        print("Inference: ")
         for rule in ruleList:
             projectFuzzVal = 0
             teamExpFuzzVal = 0
@@ -145,14 +147,20 @@ class Fuzzy:
                    inferredRule = max(projectFuzzVal,teamExpFuzzVal)
 
                    if riskRule.__contains__('low'):
+                       print(inferredRule, " low")
+                       riskDict['Low'] = inferredRule
                        centroidLow = (50 + 100 + 100) / 3
                        defuzzifiedVal = centroidLow * inferredRule
                        break
                    if riskRule.__contains__('normal'):
+                       print(inferredRule, " normal")
+                       riskDict['Normal'] = inferredRule
                        centroidMed = (25 + 50 + 75) / 3
                        defuzzifiedVal = centroidMed * inferredRule
                        break
                    if riskRule.__contains__('high'):
+                       print(inferredRule, " high")
+                       riskDict['High'] = inferredRule
                        centroidHigh = (0 + 25 + 50) / 3
                        defuzzifiedVal = centroidHigh * inferredRule
                        break
@@ -193,14 +201,20 @@ class Fuzzy:
                     inferredRule = min(projectFuzzVal, teamExpFuzzVal)
 
                     if riskRule.__contains__('low'):
+                        print(inferredRule," low")
+                        riskDict['Low'] = inferredRule
                         centroidLow = (50 + 100 + 100) / 3
                         defuzzifiedVal = centroidLow * inferredRule
                         break
                     if riskRule.__contains__('normal'):
+                        print(inferredRule," normal")
+                        riskDict['Normal'] = inferredRule
                         centroidMed = (25 + 50 + 75) / 3
                         defuzzifiedVal = centroidMed * inferredRule
                         break
                     if riskRule.__contains__('high'):
+                        print(inferredRule," high")
+                        riskDict['High'] = inferredRule
                         centroidHigh = (0 + 25 + 50) / 3
                         defuzzifiedVal = centroidHigh * inferredRule
                         break
@@ -223,14 +237,20 @@ class Fuzzy:
                     inferredRule = projectFuzzVal
 
                     if riskRule.__contains__('low'):
+                        print(inferredRule," low")
+                        riskDict['Low'] = inferredRule
                         centroidLow = (50 + 100 + 100) / 3
                         defuzzifiedVal = centroidLow * inferredRule
                         break
                     if riskRule.__contains__('normal'):
+                        print(inferredRule," normal")
+                        riskDict['Normal'] = inferredRule
                         centroidMed = (25 + 50 + 75) / 3
                         defuzzifiedVal = centroidMed * inferredRule
                         break
                     if riskRule.__contains__('high'):
+                        print(inferredRule," high")
+                        riskDict['High'] = inferredRule
                         centroidHigh = (0 + 25 + 50) / 3
                         defuzzifiedVal = centroidHigh * inferredRule
                         break
@@ -239,8 +259,9 @@ class Fuzzy:
             fuzzList.append(inferredRule)
 
         predictedRiskValue = sum(defuzzList)/sum(fuzzList)
+        print("\nDefuzzification: ", sum(defuzzList)," / ",sum(fuzzList))
 
-        return predictedRiskValue
+        return predictedRiskValue,riskDict
 
 
 #print(Fuzzy.equ_expertUp(20))
@@ -261,8 +282,14 @@ if __name__ == '__main__':
     rulelst.append(rule3)
     rulelst.append(rule4)
 
+    print("Fuzzification: ")
+    print("Project Funding: ",Fuzzy.getMembershipValuesForVariable1(50))
+    print("Team Experience Level: ",Fuzzy.getMembershipValuesForVariable2(40),"\n")
     projectFundingFuzzDict = Fuzzy.getMembershipValuesForVariable1(50)
     teamExperienceFuzzDict = Fuzzy.getMembershipValuesForVariable2(40)
 
-    predictedValue = Fuzzy.inferenceAndDefuzz(Fuzzy,rulelst,projectFundingFuzzDict,teamExperienceFuzzDict)
-    print(predictedValue)
+
+
+    predictedValue,riskMembershipDict = Fuzzy.inferenceAndDefuzz(Fuzzy,rulelst,projectFundingFuzzDict,teamExperienceFuzzDict)
+    print("Predicted value: ",predictedValue)
+    print("Risk will be",max(riskMembershipDict))
